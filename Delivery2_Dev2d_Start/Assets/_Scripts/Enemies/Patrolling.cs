@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Patrolling : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Patrolling : MonoBehaviour
 
     private void Flip()
     {
-        transform.Rotate(new Vector3(0, 180, 0));
+        transform.Rotate(new Vector3(0, 0, Random.Range(90, 270)));
     }
 
     private void Move()

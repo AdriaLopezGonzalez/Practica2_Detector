@@ -13,7 +13,7 @@ public class WallDetector : MonoBehaviour
     float DetectionDistance = 1.5f;
 
     [SerializeField]
-    LayerMask WhatIsNotWall;
+    LayerMask WhatIsWall;
     // Update is called once per frame
     void Update()
     {
@@ -23,9 +23,8 @@ public class WallDetector : MonoBehaviour
     private void DetectWall()
     {
         var hit = Physics2D.Raycast(transform.position, 
-            Vector2.right, DetectionDistance, WhatIsNotWall);
+            transform.forward, DetectionDistance, WhatIsWall);
 
-        _hasWall = ( hit.collider == null);
-        Debug.Log(HasWall);
+        _hasWall = ( hit.collider != null);
     }
 }
