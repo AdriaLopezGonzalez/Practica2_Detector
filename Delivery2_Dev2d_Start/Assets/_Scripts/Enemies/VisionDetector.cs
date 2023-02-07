@@ -80,8 +80,10 @@ public class VisionDetector : MonoBehaviour
             {
                 if (IsNotBlocked())
                 {
-                    //foreach _playersDetected
-                    //OnPlayerDetected.Invoke(player)
+                    //foreach (Transform player in _playersDetected)
+                    //{
+                    //    OnPlayerDetected.Invoke(player)
+                    //}
                 }
             }
         }
