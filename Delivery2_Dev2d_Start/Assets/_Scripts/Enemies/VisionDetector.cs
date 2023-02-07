@@ -9,7 +9,7 @@ public class VisionDetector : MonoBehaviour
     float DetectionRange = 3;
 
     [SerializeField]
-    private float FieldOfView = 45;
+    private float FieldOfView = 90;
 
     [SerializeField]
     LayerMask WhatIsVisible;
@@ -81,7 +81,7 @@ public class VisionDetector : MonoBehaviour
                 if (IsNotBlocked())
                 {
                     //foreach _playersDetected
-                    //OnPlayerDeteced.Invoke(player)
+                    //OnPlayerDetected.Invoke(player)
                 }
             }
         }
