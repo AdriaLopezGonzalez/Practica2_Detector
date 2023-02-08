@@ -18,8 +18,6 @@ public class VisionDetector : MonoBehaviour
 
     List<Transform> _playersDetected;
 
-    //EnemyAlarm _enemyAlarm;
-
     public static Action<VisionDetector> OnPlayerDetected;
     public static Action<VisionDetector> OnPlayerUndetected;
 
@@ -58,7 +56,6 @@ public class VisionDetector : MonoBehaviour
     {
         _players = new List<Transform>();
         _playersDetected = new List<Transform>();
-        //_enemyAlarm = GetComponentInChildren<EnemyAlarm>();
     }
 
     private void OnEnable()
@@ -84,11 +81,6 @@ public class VisionDetector : MonoBehaviour
             {
                 if (IsNotBlocked())
                 {
-                    //foreach (Transform player in _playersDetected)
-                    //{
-                    //    OnPlayerDetected.Invoke(player)
-                    //}
-                    //_enemyAlarm.PlayerDetected();
                     OnPlayerDetected?.Invoke(this);
                 }
             }
