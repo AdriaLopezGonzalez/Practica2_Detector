@@ -18,7 +18,10 @@ public class VisionDetector : MonoBehaviour
 
     List<Transform> _playersDetected;
 
+    //EnemyAlarm _enemyAlarm;
 
+    public static Action<VisionDetector> OnPlayerDetected;
+    public static Action<VisionDetector> OnPlayerUndetected;
 
     private void OnDrawGizmos()
     {
@@ -54,7 +57,8 @@ public class VisionDetector : MonoBehaviour
     private void Awake()
     {
         _players = new List<Transform>();
-        _playersDetected = new List<Transform>();        
+        _playersDetected = new List<Transform>();
+        //_enemyAlarm = GetComponentInChildren<EnemyAlarm>();
     }
 
     private void OnEnable()
@@ -84,9 +88,16 @@ public class VisionDetector : MonoBehaviour
                     //{
                     //    OnPlayerDetected.Invoke(player)
                     //}
+                    //_enemyAlarm.PlayerDetected();
+                    OnPlayerDetected?.Invoke(this);
                 }
             }
         }
+        if (!IsInRange() || !IsInFOV() || !IsNotBlocked())
+        {
+            OnPlayerUndetected?.Invoke(this);
+        }
+
     }
 
    
