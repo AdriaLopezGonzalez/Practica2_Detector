@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,9 @@ public class NoiseDetector : MonoBehaviour
     List<Transform> _players;
 
     List<Transform> _playersDetected;
+
+    public static Action<NoiseDetector> OnPlayerDetected;
+    public static Action<NoiseDetector> OnPlayerUndetected;
 
     private void OnDrawGizmos()
     {
@@ -47,10 +50,14 @@ public class NoiseDetector : MonoBehaviour
     {
         if (IsInRange())
         {
-            if(IsMoving())
+            if (IsMoving())
             {
-                Debug.Log("ss");
+                OnPlayerDetected?.Invoke(this);
             }
+        }
+        if (!IsInRange() || !IsMoving())
+        {
+            OnPlayerUndetected?.Invoke(this);
         }
     }
 

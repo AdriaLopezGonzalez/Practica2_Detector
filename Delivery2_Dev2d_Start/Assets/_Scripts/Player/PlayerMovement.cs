@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
             * (_input.Sneak ? Speed/2 : Speed);
         _rigidbody.velocity = direction;
        // transform.Translate(direction);
-        _isMoving = direction.magnitude > 0.01f;
+        _isMoving = direction.magnitude > 2f;
 
         if (_isMoving)
             LookAt((Vector2)transform.position + direction);
