@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float Speed = 5;
 
+    [SerializeField]
+    private float DetectionSpeed = 2;
+
     private bool _isMoving;
     PlayerInput _input;
     Rigidbody2D _rigidbody;
@@ -36,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
             * (_input.Sneak ? Speed/2 : Speed);
         _rigidbody.velocity = direction;
        // transform.Translate(direction);
-        _isMoving = direction.magnitude > 2f;
+        _isMoving = direction.magnitude > DetectionSpeed;
 
         if (_isMoving)
             LookAt((Vector2)transform.position + direction);
